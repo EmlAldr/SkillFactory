@@ -1,6 +1,7 @@
 # Credit Scoring
 
 Проект был выполнен на платформе kaggle.com в рамках соревнования [Credit Scoring](https://www.kaggle.com/c/sf-dst-scoring)
+
 Основной ноутбук - **sf-credit-scoring-emelyanovan.ipynb**
 
 ## Цeли и задачи проекта:
