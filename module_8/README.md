@@ -3,9 +3,11 @@
 Проект был выполнен на платформе kaggle.com в рамках соревнования [Car Price prediction Part2](https://www.kaggle.com/c/sf-dst-car-price-prediction-part2)
 
 Решение разбито на две части и реализовано в соответствующих ноутбуках.
+
 Нотубук для google colab
  - 1-я часть **sf-car-price-2-emelyanov-p-1-eda-catboost-nn1_colab.ipynb**
  - 2-я часть **sf-car-price-2-emelyanov-p-2-nn1-nlp-cv_colab.ipynb**
+
 Ноутбук для kaggle 
  - 1-я часть **sf-car-price-2-emelyanov-p-1-eda-catboost-nn1_kaggle.ipynb**
  - 2-я часть **sf-car-price-2-emelyanov-p-2-nn1-nlp-cv_kaggle.ipynb**
