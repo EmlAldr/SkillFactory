@@ -7,6 +7,7 @@ from sklearn.metrics import mean_squared_log_error
 from math import sqrt
 
 # Cервис metric.py читает очереди y_true и y_pred с истинными ответами и предсказаниями.
+# Делает расчет метрики RMSLE для полученных значений.
 
 try:
     # Подключимся к серверу:
@@ -19,7 +20,7 @@ try:
     channel.queue_declare(queue='y_pred')
 
     data_true, data_pred = dict(), dict()
-    rmse_y_true, rmse_y_pred = list(), list()
+    rmsle_y_true, rmsle_y_pred = list(), list()
     
     def print_values(text):
         # Функция выводит текст в stdout и сохраняет в файл
@@ -53,12 +54,12 @@ try:
         # Функция сохраняет парные значения в отдельные списки, 
         # производит расчет метрики и пишет результат в файл
         try:
-            rmse_y_true.append(y_true)
-            rmse_y_pred.append(y_pred)
-            print_values(f'{id}:  Есть оба значения y_true={rmse_y_true[-1]} y_pred={rmse_y_pred[-1]}')
+            rmsle_y_true.append(y_true)
+            rmsle_y_pred.append(y_pred)
+            print_values(f'{id}:  Есть оба значения y_true={rmsle_y_true[-1]} y_pred={rmsle_y_pred[-1]}')
 
-            RMSE = sqrt(mean_squared_log_error(np.array(rmse_y_true), np.array(rmse_y_pred)))
-            print_values(f'{id}:  RMSE = {RMSE:.5f}')
+            RMSLE = sqrt(mean_squared_log_error(np.array(rmsle_y_true), np.array(rmsle_y_pred)))
+            print_values(f'{id}:  RMSLE = {RMSLE:.5f}')
 
         except Exception as ex:
             print(ex)

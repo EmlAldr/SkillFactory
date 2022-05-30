@@ -6,7 +6,8 @@ import json
 import time
 from datetime import datetime
 
-# Cервис для отправки признаков в одну очередь, а истинных ответов — в другую.
+# Cервис для отправки набора признаков в одну очередь (для сервиса с моделью), 
+# а истинных ответов — в другую (для сервиса подсчета метрик).
 
 VERSION = 'v01'
 LOAD_DATA_PATH = f'./sber_housing_market_data_{VERSION}.csv'
@@ -44,7 +45,7 @@ while True:
         random_row = np.random.randint(0, X.shape[0]-1)
 
         # Подключение к серверу на локальном хосте:
-        # Если вы захотите подключиться к удаленному серверу, то вместо localhost укажите его IP-адрес.
+        # Если надо подключиться к удаленному серверу, то вместо localhost указываем его IP-адрес.
         connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
         #connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
         channel = connection.channel()
@@ -54,6 +55,7 @@ while True:
         channel.queue_declare(queue='Features')
 
         # Подготовим сообщение в виде словаря, который будет отправлен в виде json
+        # Есть проблема, json не понимает формат numpy, поэтому нужен дополнительный энкодер
         now = datetime.now().strftime('%Y%m%d%H%M%S')
 
         data_y = {'id': now, 'data': y[random_row]}

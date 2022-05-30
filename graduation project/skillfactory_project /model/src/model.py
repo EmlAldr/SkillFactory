@@ -6,7 +6,7 @@ import numpy as np
 from catboost import CatBoostRegressor
 
 
-# Cервис прочитает признаки, сделает предсказание и отправит его в очередь.
+# Cервис получает набор признаков из очереди, сделает предсказание и отправит его в очередь для подсчета метрик.
 
 VERSION = 'v01'
 LOAD_MODEL_FULL_PATH_JSON = f'./sber_housing_market_model_{VERSION}.json'
